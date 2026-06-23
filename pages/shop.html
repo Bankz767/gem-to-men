@@ -82,6 +82,7 @@
                                 <span>$35</span>
                                 <span>Coming soon</span>
                             </div>
+                            <a class="product-link" href="#shop-waitlist">Notify me</a>
                         </div>
                     </article>
 
@@ -97,6 +98,7 @@
                                 <span>$28</span>
                                 <span>Coming soon</span>
                             </div>
+                            <a class="product-link" href="#shop-waitlist">Notify me</a>
                         </div>
                     </article>
 
@@ -112,6 +114,7 @@
                                 <span>$22</span>
                                 <span>Coming soon</span>
                             </div>
+                            <a class="product-link" href="#shop-waitlist">Notify me</a>
                         </div>
                     </article>
 
@@ -127,22 +130,50 @@
                                 <span>$12</span>
                                 <span>Coming soon</span>
                             </div>
+                            <a class="product-link" href="#shop-waitlist">Notify me</a>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="shop-cta section-shell" aria-labelledby="shop-cta-title">
+        <section class="shop-cta section-shell" id="shop-waitlist" aria-labelledby="shop-cta-title">
             <div>
                 <p class="eyebrow">Want first access?</p>
                 <h2 id="shop-cta-title">Join the list before the first drop.</h2>
                 <p>
-                    Send a message and tell us what products you want to see
-                    first. Apparel, accessories, journals, or something else.
+                    Tell us what products you want to see first. This gives
+                    GEM TO MEN a cleaner signal before the first merch drop.
                 </p>
             </div>
-            <a class="cta-btn" href="./contact.html">Request First Access</a>
+            <form class="shop-waitlist-form" action="https://formspree.io/f/maqgnaer" method="POST">
+                <input type="hidden" name="_subject" value="New GEM TO MEN shop first-access request">
+                <input type="hidden" name="_next" value="https://gem-to-men.pages.dev/pages/thank-you.html">
+
+                <div class="form-group">
+                    <label for="shop-name">Full name</label>
+                    <input type="text" id="shop-name" name="name" autocomplete="name" placeholder="Your name" maxlength="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="shop-email">Email address</label>
+                    <input type="email" id="shop-email" name="email" autocomplete="email" placeholder="you@example.com" maxlength="254" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="shop-interest">What should drop first?</label>
+                    <select id="shop-interest" name="shop_interest" required>
+                        <option value="" selected disabled>Select a product type</option>
+                        <option value="apparel">Apparel</option>
+                        <option value="caps">Caps</option>
+                        <option value="journals">Journals</option>
+                        <option value="wristbands">Wristbands</option>
+                        <option value="other">Something else</option>
+                    </select>
+                </div>
+
+                <button class="submit-btn" type="submit">Request First Access</button>
+            </form>
         </section>
     </main>
 

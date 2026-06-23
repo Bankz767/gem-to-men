@@ -827,10 +827,14 @@ footer p {
   font-size: 1.35rem;
 }
 
-.insight-card > p:last-child {
+.insight-card > p:not(.article-meta) {
   margin: 0.9rem 0 0;
   color: var(--muted);
   line-height: 1.7;
+}
+
+.insight-card .text-link {
+  margin-top: 1.2rem;
 }
 
 .blog-cta {
@@ -1079,10 +1083,24 @@ footer p {
   text-transform: uppercase;
 }
 
+.product-link {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: var(--gold);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.product-link:hover {
+  color: var(--gold-light);
+}
+
 .shop-cta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 1.1fr);
   gap: 2rem;
   margin-block: clamp(4rem, 9vw, 7rem);
   padding: clamp(2rem, 5vw, 3.5rem);
@@ -1103,6 +1121,96 @@ footer p {
 
 .shop-cta .cta-btn {
   flex: 0 0 auto;
+}
+
+.shop-waitlist-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.article-page {
+  background:
+    radial-gradient(circle at 82% 8%, rgba(214, 180, 95, 0.08), transparent 27rem),
+    var(--navy-900);
+}
+
+.article-hero {
+  padding: clamp(4.5rem, 10vw, 7rem) 1.25rem clamp(3.5rem, 8vw, 5rem);
+  text-align: center;
+  background:
+    linear-gradient(rgba(7, 10, 18, 0.72), rgba(7, 10, 18, 0.95)),
+    url("../assets/Brotherhood-banner.jpg") center / cover no-repeat;
+}
+
+.article-hero > div {
+  width: min(54rem, 100%);
+  margin: 0 auto;
+}
+
+.article-hero h1 {
+  margin: 0;
+  color: var(--gold-light);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  line-height: 1.06;
+  text-transform: uppercase;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.7);
+}
+
+.article-hero p:last-child {
+  max-width: 42rem;
+  margin: 1.3rem auto 0;
+  color: var(--text);
+  font-size: clamp(1rem, 2.3vw, 1.2rem);
+  line-height: 1.75;
+}
+
+.article-body {
+  width: min(48rem, calc(100% - 2.5rem));
+  margin: clamp(4rem, 9vw, 6rem) auto;
+}
+
+.article-body p {
+  color: var(--muted);
+  font-size: 1.06rem;
+  line-height: 1.85;
+}
+
+.article-body h2 {
+  margin: 2.4rem 0 0.75rem;
+  color: var(--gold-light);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.65rem, 4vw, 2.35rem);
+  line-height: 1.18;
+}
+
+.article-body .article-lede {
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.25rem, 3vw, 1.55rem);
+  line-height: 1.7;
+}
+
+.article-callout {
+  margin: 2.5rem 0;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  color: var(--gold-light);
+  background:
+    linear-gradient(135deg, rgba(214, 180, 95, 0.12), transparent 60%),
+    var(--panel);
+  border: 1px solid var(--line);
+  border-left: 0.35rem solid var(--gold);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+}
+
+.article-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
 }
 
 .contact-page {
@@ -1483,9 +1591,14 @@ footer p {
   }
 
   .shop-toolbar,
-  .shop-cta {
+  .shop-cta,
+  .article-nav {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .shop-cta {
+    grid-template-columns: 1fr;
   }
 
   .product-grid {
