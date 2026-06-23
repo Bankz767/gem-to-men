@@ -233,6 +233,35 @@ main {
   line-height: 1.8;
 }
 
+.brand-mantra {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin-bottom: clamp(4rem, 9vw, 7rem);
+  overflow: hidden;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+}
+
+.brand-mantra p {
+  margin: 0;
+  min-height: 10rem;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  color: var(--gold-light);
+  background:
+    linear-gradient(145deg, rgba(214, 180, 95, 0.11), transparent 58%),
+    var(--panel);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.35rem, 3vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.18;
+  text-align: center;
+}
+
 .home-pillars {
   padding-block: clamp(4rem, 9vw, 7rem);
   background:
@@ -1541,6 +1570,7 @@ footer p {
   }
 
   .home-mission,
+  .brand-mantra,
   .home-pillar-grid,
   .home-insight-grid,
   .home-shop-preview,
