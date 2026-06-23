@@ -764,6 +764,29 @@ footer p {
   line-height: 1.85;
 }
 
+.standard-creed {
+  margin-bottom: clamp(4rem, 9vw, 6rem);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  background:
+    linear-gradient(135deg, rgba(214, 180, 95, 0.12), transparent 60%),
+    var(--panel);
+  border: 1px solid var(--line);
+  border-left: 0.35rem solid var(--gold);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+}
+
+.standard-creed p {
+  max-width: 48rem;
+  margin: 0 auto;
+  color: var(--gold-light);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.55rem, 4vw, 2.7rem);
+  font-style: italic;
+  line-height: 1.35;
+  text-align: center;
+}
+
 .standard-origin {
   display: grid;
   grid-template-columns: minmax(18rem, 0.82fr) minmax(0, 1.18fr);
