@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact GEM TO MEN to learn more about mentorship, community, and brotherhood.">
+    <meta name="author" content="GEM TO MEN">
+    <title>Contact | GEM TO MEN</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="brand">
+            <a href="../index.html" aria-label="GEM TO MEN home">GEM TO MEN</a>
+            <p>Where Men Rise Together.</p>
+        </div>
+
+        <nav aria-label="Main navigation">
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="./contact.html" aria-current="page">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <section class="contact-intro" aria-labelledby="contact-title">
+            <p class="eyebrow">The door is open</p>
+            <h1 id="contact-title">Let’s Build Something Meaningful</h1>
+            <p>
+                Whether you are looking for guidance, want to join the
+                brotherhood, or have a question, we would be glad to hear
+                from you.
+            </p>
+        </section>
+
+        <section class="contact-layout" aria-label="Contact GEM TO MEN">
+            <div class="contact-details">
+                <p class="eyebrow">Start a conversation</p>
+                <h2>You don’t have to figure it all out alone.</h2>
+                <p class="contact-summary">
+                    Tell us where you are in your journey and what kind of
+                    support you are seeking. Every message begins with respect
+                    and is treated with care.
+                </p>
+
+                <div class="contact-points">
+                    <article class="contact-point">
+                        <span class="contact-icon" aria-hidden="true">01</span>
+                        <div>
+                            <h3>Brotherhood</h3>
+                            <p>Connect with men committed to growth and accountability.</p>
+                        </div>
+                    </article>
+
+                    <article class="contact-point">
+                        <span class="contact-icon" aria-hidden="true">02</span>
+                        <div>
+                            <h3>Mentorship</h3>
+                            <p>Ask about guidance for identity, discipline, and leadership.</p>
+                        </div>
+                    </article>
+
+                    <article class="contact-point">
+                        <span class="contact-icon" aria-hidden="true">03</span>
+                        <div>
+                            <h3>Partnerships</h3>
+                            <p>Share an idea for an event, program, or collaboration.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="contact-form-card">
+                <h2>Send Us a Message</h2>
+                <p>Complete the form and we’ll get back to you.</p>
+
+                <form
+                    class="contact-form"
+                    name="contact"
+                    action="/pages/thank-you.html"
+                    method="POST"
+                    data-netlify="true"
+                    netlify-honeypot="bot-field"
+                >
+                    <input type="hidden" name="form-name" value="contact">
+
+                    <p class="form-honeypot" aria-hidden="true">
+                        <label>
+                            Do not fill this field:
+                            <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+                        </label>
+                    </p>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full name</label>
+                            <input type="text" id="name" name="name" autocomplete="name" placeholder="Your name" maxlength="100" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" maxlength="254" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">What can we help with?</label>
+                        <select id="subject" name="subject" required>
+                            <option value="" selected disabled>Select a topic</option>
+                            <option value="brotherhood">Join the brotherhood</option>
+                            <option value="mentorship">Mentorship</option>
+                            <option value="partnership">Partnership</option>
+                            <option value="general">General question</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your message</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Tell us a little about your journey..." maxlength="3000" required></textarea>
+                    </div>
+
+                    <p class="form-notice">
+                        By submitting this form, you consent to GEM TO MEN using
+                        your details to respond to your message.
+                    </p>
+
+                    <button class="submit-btn" type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 GEM TO MEN. All rights reserved.</p>
+    </footer>
+</body>
+</html>
