@@ -580,6 +580,7 @@ footer p {
 .section-heading h2,
 .about-cta h2,
 .standard-intro h2,
+.standard-origin h2,
 .standard-practice h2,
 .standard-cta h2,
 .shop-intro h2,
@@ -761,6 +762,52 @@ footer p {
   color: var(--muted);
   font-size: 1.06rem;
   line-height: 1.85;
+}
+
+.standard-origin {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(2rem, 7vw, 5rem);
+  align-items: center;
+  padding-bottom: clamp(4rem, 9vw, 6rem);
+}
+
+.standard-origin blockquote {
+  margin: 0;
+  padding: clamp(1.8rem, 4vw, 3rem);
+  background:
+    linear-gradient(145deg, rgba(214, 180, 95, 0.12), transparent),
+    var(--panel);
+  border: 1px solid rgba(214, 180, 95, 0.28);
+  border-left: 0.35rem solid var(--gold);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+}
+
+.standard-origin blockquote p {
+  margin: 0;
+  color: var(--gold-light);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.3rem, 3vw, 1.85rem);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.standard-origin cite {
+  display: block;
+  margin-top: 1.25rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: normal;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.standard-origin div > p:not(.eyebrow) {
+  margin: 1.25rem 0 0;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.8;
 }
 
 .standard-grid-section {
@@ -1747,6 +1794,7 @@ footer p {
   .home-mission,
   .brand-mantra,
   .standard-intro,
+  .standard-origin,
   .standard-practice,
   .home-pillar-grid,
   .home-insight-grid,
