@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="GEM TO MEN">
+  <rect width="64" height="64" rx="10" fill="#0b1225"/>
+  <path d="M14 18h36v7H14zM18 29h28v6H18zM24 39h16v7H24z" fill="#e4c56a"/>
+  <path d="M14 18h36v28H14z" fill="none" stroke="#f5e1a4" stroke-width="3"/>
+</svg>
