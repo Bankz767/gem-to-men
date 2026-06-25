@@ -95,6 +95,7 @@
                 >
                     <input type="hidden" name="_subject" value="New GEM TO MEN contact message">
                     <input type="hidden" name="_next" value="https://gem-to-men.pages.dev/pages/thank-you">
+                    <input class="form-honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
 
                     <div class="form-row">
                         <div class="form-group">
@@ -136,8 +137,23 @@
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 GEM TO MEN. All rights reserved.</p>
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <a href="/" aria-label="GEM TO MEN home">GEM TO MEN</a>
+                <p>Where Men Rise Together.</p>
+            </div>
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pages/standard">Our Standard</a></li>
+                    <li><a href="/pages/blog">Blog</a></li>
+                    <li><a href="/pages/shop">Shop</a></li>
+                    <li><a href="/pages/contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <p class="footer-copy">&copy; 2026 GEM TO MEN. All rights reserved.</p>
     </footer>
 </body>
 </html>
