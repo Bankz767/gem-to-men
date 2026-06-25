@@ -155,5 +155,22 @@
         </div>
         <p class="footer-copy">&copy; 2026 GEM TO MEN. All rights reserved.</p>
     </footer>
+    <script>
+        const contactForm = document.querySelector(".contact-form");
+        const resetFlag = "gemToMenContactSubmitted";
+
+        if (contactForm) {
+            contactForm.addEventListener("submit", () => {
+                sessionStorage.setItem(resetFlag, "true");
+            });
+
+            window.addEventListener("pageshow", () => {
+                if (sessionStorage.getItem(resetFlag) === "true") {
+                    contactForm.reset();
+                    sessionStorage.removeItem(resetFlag);
+                }
+            });
+        }
+    </script>
 </body>
 </html>
