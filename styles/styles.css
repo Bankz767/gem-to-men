@@ -11,7 +11,7 @@
   --clay: #8d5f4a;
   --text: #f0e8d0;
   --muted: #aeb4c2;
-  --line: rgba(201, 168, 76, 0.2);
+  --line: rgba(201, 168, 76, 0.18);
   --panel: rgba(17, 24, 40, 0.9);
   --shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.38);
   --radius: 0.75rem;
@@ -690,40 +690,43 @@ main {
   line-height: 1.2;
 }
 
-.home-conviction.section-shell {
-  width: 100%;
-  max-width: none;
-  margin-inline: 0;
+.home-quote {
   padding: clamp(5rem, 11vw, 9rem) clamp(1.25rem, 5vw, 4rem);
+  text-align: center;
   background:
-    linear-gradient(180deg, rgba(6, 8, 15, 0.96), rgba(11, 17, 32, 0.98)),
+    radial-gradient(ellipse at 50% 0%, rgba(201, 168, 76, 0.08) 0%, transparent 55%),
     var(--navy-950);
 }
 
-.home-conviction blockquote {
-  width: min(58rem, 100%);
-  margin: 0 auto;
-  padding-block: 2.5rem;
-  border-top: 1px solid rgba(201, 168, 76, 0.45);
-  border-bottom: 1px solid rgba(201, 168, 76, 0.45);
-  text-align: center;
+.home-quote-inner {
+  max-width: 52rem;
+  margin-inline: auto;
 }
 
-.home-conviction blockquote p {
-  margin: 0;
+.home-quote-rule {
+  display: block;
+  width: 3rem;
+  height: 1px;
+  margin: 0 auto 2.5rem;
+  background: var(--gold);
+  opacity: 0.6;
+}
+
+.home-quote blockquote {
+  margin: 0 0 2rem;
   color: var(--gold-light);
   font-family: var(--serif);
-  font-size: clamp(1.8rem, 4.5vw, 3rem);
+  font-size: clamp(1.5rem, 3.5vw, 2.4rem);
   font-style: italic;
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.55;
 }
 
-.home-conviction cite {
+.home-quote cite {
   display: block;
-  margin-top: 1.5rem;
-  color: var(--gold);
-  font-size: 0.78rem;
+  margin-bottom: 2.5rem;
+  color: var(--muted);
+  font-size: 0.82rem;
   font-style: normal;
   font-weight: 800;
   letter-spacing: 0;
