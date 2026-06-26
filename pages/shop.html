@@ -176,6 +176,72 @@
                 <button class="submit-btn" type="submit">Request First Access</button>
             </form>
         </section>
+
+        <section class="vendor-section section-shell" aria-labelledby="vendor-title">
+            <div class="vendor-intro">
+                <p class="eyebrow">Sell with purpose</p>
+                <h2 id="vendor-title">Want to Supply the Drop?</h2>
+                <p>
+                    GEM TO MEN is built for men of standard, and the products
+                    we carry should reflect that. If you make something worth
+                    carrying, tell us about it. Every vendor is reviewed before
+                    anything goes live.
+                </p>
+            </div>
+
+            <div class="vendor-form-card" id="vendor-interest">
+                <h3>Express Vendor Interest</h3>
+                <p>We review every submission personally. No mass listings, no unverified sellers.</p>
+
+                <form
+                    class="vendor-form"
+                    name="vendor-interest"
+                    action="https://formspree.io/f/xjgqydzb"
+                    method="POST"
+                >
+                    <input type="hidden" name="_subject" value="New GTM Vendor Interest">
+                    <input type="hidden" name="_next" value="https://gem-to-men.pages.dev/pages/thank-you">
+                    <input class="form-honeypot" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="vendor-name">Full name</label>
+                            <input type="text" id="vendor-name" name="name" autocomplete="name" placeholder="Your name" maxlength="100" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vendor-email">Email address</label>
+                            <input type="email" id="vendor-email" name="email" autocomplete="email" placeholder="you@example.com" maxlength="254" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="vendor-type">What do you make or sell?</label>
+                        <select id="vendor-type" name="product_type" required>
+                            <option value="" selected disabled>Select a category</option>
+                            <option value="apparel">Apparel</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="print">Print / Journals</option>
+                            <option value="digital">Digital products</option>
+                            <option value="other">Something else</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="vendor-description">Tell us about your product</label>
+                        <textarea id="vendor-description" name="description" rows="4" placeholder="What is it, who is it for, and why does it belong here..." maxlength="1500" required></textarea>
+                    </div>
+
+                    <p class="form-notice">
+                        Submitting this form does not guarantee listing. GEM TO
+                        MEN reviews every vendor personally before any product
+                        goes live.
+                    </p>
+
+                    <button class="submit-btn" type="submit">Submit Interest</button>
+                </form>
+            </div>
+        </section>
     </main>
 
     <footer class="site-footer">
@@ -197,21 +263,27 @@
         <p class="footer-copy">&copy; 2026 GEM TO MEN. All rights reserved.</p>
     </footer>
     <script>
-        const shopWaitlistForm = document.querySelector(".shop-waitlist-form");
-        const resetFlag = "gemToMenShopWaitlistSubmitted";
+        const resetSubmittedForm = (selector, resetFlag) => {
+            const form = document.querySelector(selector);
 
-        if (shopWaitlistForm) {
-            shopWaitlistForm.addEventListener("submit", () => {
+            if (!form) {
+                return;
+            }
+
+            form.addEventListener("submit", () => {
                 sessionStorage.setItem(resetFlag, "true");
             });
 
             window.addEventListener("pageshow", () => {
                 if (sessionStorage.getItem(resetFlag) === "true") {
-                    shopWaitlistForm.reset();
+                    form.reset();
                     sessionStorage.removeItem(resetFlag);
                 }
             });
-        }
+        };
+
+        resetSubmittedForm(".shop-waitlist-form", "gemToMenShopWaitlistSubmitted");
+        resetSubmittedForm(".vendor-form", "gemToMenVendorInterestSubmitted");
     </script>
 </body>
 </html>
