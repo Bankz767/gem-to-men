@@ -1605,6 +1605,154 @@ main {
   gap: 1rem;
 }
 
+.brotherhood-page {
+  background:
+    radial-gradient(circle at 14% 12%, rgba(228, 197, 106, 0.08), transparent 28rem),
+    var(--navy-900);
+}
+
+.brotherhood-hero {
+  min-height: 68vh;
+  display: grid;
+  place-items: center;
+  padding: clamp(5rem, 10vw, 8rem) 1.25rem;
+  text-align: center;
+  background:
+    linear-gradient(rgba(7, 10, 18, 0.58), rgba(7, 10, 18, 0.94)),
+    url("../assets/Brotherhood-banner.jpg") center / cover no-repeat;
+}
+
+.brotherhood-hero > div {
+  width: min(58rem, 100%);
+}
+
+.brotherhood-hero h1 {
+  margin: 0;
+  color: var(--gold-light);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.7rem, 8vw, 5.8rem);
+  line-height: 1.02;
+  text-transform: uppercase;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.72);
+}
+
+.brotherhood-hero .hero-copy {
+  max-width: 48rem;
+  margin: 1.5rem auto 0;
+}
+
+.brotherhood-what {
+  display: grid;
+  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+  gap: clamp(2rem, 6vw, 4.5rem);
+  align-items: start;
+  margin-block: clamp(4rem, 9vw, 7rem);
+}
+
+.brotherhood-block {
+  position: sticky;
+  top: 7rem;
+}
+
+.brotherhood-block h2,
+.brotherhood-rules h2,
+.brotherhood-cta h2 {
+  margin: 0;
+  color: var(--gold-light);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  line-height: 1.12;
+}
+
+.brotherhood-block p:not(.eyebrow),
+.brotherhood-cta p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.brotherhood-block p:not(.eyebrow) {
+  margin: 1.1rem 0 0;
+}
+
+.brotherhood-pillars {
+  display: grid;
+  gap: 1rem;
+}
+
+.brotherhood-pillar {
+  padding: clamp(1.25rem, 4vw, 2rem);
+  background: var(--panel);
+  border: 1px solid rgba(228, 197, 106, 0.22);
+  border-radius: 0.5rem;
+}
+
+.brotherhood-pillar h3 {
+  margin: 0.6rem 0 0.65rem;
+  color: var(--gold-light);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  line-height: 1.2;
+}
+
+.brotherhood-pillar p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.brotherhood-rules {
+  margin-block: clamp(4rem, 9vw, 7rem);
+  padding: clamp(2rem, 5vw, 3.5rem);
+  background:
+    linear-gradient(135deg, rgba(228, 197, 106, 0.1), transparent 58%),
+    var(--panel);
+  border: 1px solid rgba(228, 197, 106, 0.28);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+}
+
+.rules-list {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: brotherhood-rules;
+}
+
+.rules-list li {
+  counter-increment: brotherhood-rules;
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+.rules-list li::before {
+  content: counter(brotherhood-rules, decimal-leading-zero);
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  color: var(--navy-950);
+  background: var(--gold);
+  border-radius: 50%;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.brotherhood-cta {
+  margin-block: clamp(4rem, 9vw, 7rem);
+  text-align: center;
+}
+
+.brotherhood-cta p:not(.eyebrow) {
+  max-width: 42rem;
+  margin: 1.1rem auto 1.8rem;
+}
+
 .article-page {
   background:
     radial-gradient(circle at 82% 8%, rgba(214, 180, 95, 0.08), transparent 27rem),
@@ -1988,6 +2136,14 @@ main {
   .contact-layout {
     grid-template-columns: 1fr;
   }
+
+  .brotherhood-what {
+    grid-template-columns: 1fr;
+  }
+
+  .brotherhood-block {
+    position: static;
+  }
 }
 
 @media (max-width: 700px) {
@@ -2120,13 +2276,15 @@ main {
   .shop-toolbar,
   .shop-cta,
   .vendor-section,
+  .brotherhood-what,
   .article-nav {
     align-items: flex-start;
     flex-direction: column;
   }
 
   .shop-cta,
-  .vendor-section {
+  .vendor-section,
+  .brotherhood-what {
     grid-template-columns: 1fr;
   }
 
