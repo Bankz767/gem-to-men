@@ -17,6 +17,399 @@
     <title>The Brotherhood | GEM TO MEN</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../styles/styles.css">
+    <style>
+        .bh-hero {
+            position: relative;
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            isolation: isolate;
+            overflow: hidden;
+            padding: 8rem clamp(1.25rem, 5vw, 4rem);
+            text-align: center;
+            background:
+                linear-gradient(180deg, rgba(7, 10, 18, 0.5) 0%, rgba(7, 10, 18, 0.9) 68%, #070a12 100%),
+                url("../assets/Brotherhood-banner.jpg") center / cover no-repeat;
+        }
+
+        .bh-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            background-size: 180px;
+            opacity: 0.36;
+            pointer-events: none;
+        }
+
+        .bh-hero-inner {
+            width: min(52rem, 100%);
+            position: relative;
+        }
+
+        .bh-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            margin: 0 0 2rem;
+            padding: 0.5rem 1.1rem;
+            color: var(--gold);
+            background: rgba(214, 180, 95, 0.07);
+            border: 1px solid rgba(214, 180, 95, 0.35);
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        .bh-badge::before {
+            content: "";
+            width: 0.4rem;
+            height: 0.4rem;
+            background: var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(214, 180, 95, 0.9);
+            animation: bhPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes bhPulse {
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.42;
+                transform: scale(0.78);
+            }
+        }
+
+        .bh-hero h1 {
+            margin: 0 0 1.5rem;
+            color: var(--gold-light);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 6.5rem;
+            line-height: 0.96;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            text-shadow: 0 0 80px rgba(214, 180, 95, 0.18);
+        }
+
+        .bh-hero h1 em {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .bh-hero-sub {
+            max-width: 38rem;
+            margin: 0 auto 3rem;
+            color: var(--muted);
+            font-size: 1.12rem;
+            line-height: 1.8;
+        }
+
+        .bh-scroll-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.45rem;
+            color: rgba(214, 180, 95, 0.42);
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 0;
+            text-transform: uppercase;
+            transform: translateX(-50%);
+        }
+
+        .bh-scroll-hint span {
+            width: 1px;
+            height: 2.5rem;
+            background: linear-gradient(to bottom, rgba(214, 180, 95, 0.55), transparent);
+            animation: bhScrollLine 1.8s ease-in-out infinite;
+        }
+
+        @keyframes bhScrollLine {
+            0% {
+                transform: scaleY(0);
+                transform-origin: top;
+            }
+
+            50% {
+                transform: scaleY(1);
+                transform-origin: top;
+            }
+
+            51% {
+                transform: scaleY(1);
+                transform-origin: bottom;
+            }
+
+            100% {
+                transform: scaleY(0);
+                transform-origin: bottom;
+            }
+        }
+
+        .bh-what {
+            width: min(72rem, calc(100% - 2.5rem));
+            margin: 0 auto;
+            padding-block: 8rem;
+        }
+
+        .bh-what-top {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: clamp(3rem, 8vw, 7rem);
+            align-items: end;
+            margin-bottom: 5.5rem;
+        }
+
+        .bh-what-top h2,
+        .bh-rules-label h2,
+        .bh-cta h2 {
+            margin: 0.75rem 0 0;
+            color: var(--gold-light);
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.08;
+            letter-spacing: 0;
+        }
+
+        .bh-what-top h2,
+        .bh-cta h2 {
+            font-size: 3.45rem;
+        }
+
+        .bh-rules-label h2 {
+            font-size: 3rem;
+        }
+
+        .bh-what-top p,
+        .bh-rules-label p,
+        .bh-cta p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 1.06rem;
+            line-height: 1.85;
+        }
+
+        .bh-pillars {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1px;
+            overflow: hidden;
+            background: var(--line);
+            border: 1px solid var(--line);
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .bh-pillar {
+            position: relative;
+            overflow: hidden;
+            min-height: 21rem;
+            padding: 3rem;
+            background: var(--panel);
+            transition: background 220ms ease, transform 220ms ease;
+        }
+
+        .bh-pillar::after {
+            content: attr(data-num);
+            position: absolute;
+            right: 1rem;
+            bottom: -1.55rem;
+            color: rgba(214, 180, 95, 0.06);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 8rem;
+            font-weight: 700;
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .bh-pillar:hover {
+            background: rgba(214, 180, 95, 0.075);
+            transform: translateY(-2px);
+        }
+
+        .bh-pillar-tag {
+            margin: 0;
+            color: var(--gold);
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0;
+            text-transform: uppercase;
+        }
+
+        .bh-pillar h3 {
+            margin: 1rem 0 0.85rem;
+            color: var(--gold-light);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.7rem;
+            line-height: 1.2;
+        }
+
+        .bh-pillar p:not(.bh-pillar-tag) {
+            position: relative;
+            z-index: 1;
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.98rem;
+            line-height: 1.72;
+        }
+
+        .bh-rules {
+            padding: 8rem clamp(1.25rem, 5vw, 4rem);
+            background:
+                radial-gradient(ellipse at 50% 0%, rgba(214, 180, 95, 0.07) 0%, transparent 60%),
+                var(--navy-950);
+        }
+
+        .bh-rules-inner {
+            width: min(72rem, 100%);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+            gap: clamp(3rem, 8vw, 7rem);
+            align-items: start;
+        }
+
+        .bh-rules-label {
+            position: sticky;
+            top: 6rem;
+        }
+
+        .bh-rules-label p:not(.eyebrow) {
+            margin-top: 1rem;
+        }
+
+        .bh-rules-list {
+            display: grid;
+            gap: 0;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .bh-rules-list li {
+            display: grid;
+            grid-template-columns: 2.5rem minmax(0, 1fr);
+            gap: 1.25rem;
+            align-items: start;
+            padding: 1.75rem 0;
+            color: var(--text);
+            border-top: 1px solid var(--line);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .bh-rules-list li:last-child {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .bh-rules-list li::before {
+            content: attr(data-n);
+            padding-top: 0.35rem;
+            color: var(--gold);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0;
+        }
+
+        .bh-cta {
+            padding: 8rem clamp(1.25rem, 5vw, 4rem);
+            text-align: center;
+            background: var(--navy-900);
+        }
+
+        .bh-cta-inner {
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        .bh-cta p:not(.eyebrow) {
+            margin: 1.25rem 0 2.5rem;
+        }
+
+        @media (max-width: 900px) {
+            .bh-hero h1 {
+                font-size: 5rem;
+            }
+
+            .bh-what-top,
+            .bh-rules-inner {
+                grid-template-columns: 1fr;
+            }
+
+            .bh-rules-label {
+                position: static;
+            }
+
+            .bh-pillars {
+                grid-template-columns: 1fr;
+            }
+
+            .bh-pillar {
+                min-height: auto;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .bh-hero {
+                min-height: 88svh;
+                padding-block: 6.5rem;
+            }
+
+            .bh-hero h1 {
+                font-size: 3.45rem;
+            }
+
+            .bh-hero-sub {
+                font-size: 1rem;
+            }
+
+            .bh-scroll-hint {
+                display: none;
+            }
+
+            .bh-what,
+            .bh-rules,
+            .bh-cta {
+                padding-block: 5rem;
+            }
+
+            .bh-what-top {
+                margin-bottom: 3rem;
+            }
+
+            .bh-what-top h2,
+            .bh-rules-label h2,
+            .bh-cta h2 {
+                font-size: 2.35rem;
+            }
+
+            .bh-pillar {
+                padding: 2rem;
+            }
+
+            .bh-rules-list li {
+                grid-template-columns: 2rem minmax(0, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .bh-badge::before,
+            .bh-scroll-hint span {
+                animation: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -36,37 +429,42 @@
         </nav>
     </header>
 
-    <main class="brotherhood-page">
-        <section class="brotherhood-hero" aria-labelledby="brotherhood-title">
-            <div>
-                <p class="eyebrow">First circle</p>
-                <h1 id="brotherhood-title">You Are Inside the Room.</h1>
-                <p class="hero-copy">
-                    This is not a fan page. It is not a group chat. The
-                    Brotherhood is a standard: a small, deliberate circle of
-                    men committed to growing in identity, discipline, and
-                    legacy together.
+    <main>
+        <section class="bh-hero" aria-labelledby="bh-title">
+            <div class="bh-hero-inner">
+                <p class="bh-badge">First Circle - Private Access</p>
+                <h1 id="bh-title">You Are<br><em>Inside</em><br>The Room.</h1>
+                <p class="bh-hero-sub">
+                    This is not a fan page. Not a group chat. The Brotherhood
+                    is a deliberate circle built for men who are becoming
+                    something, not performing something.
                 </p>
+                <a href="/pages/join" class="cta-btn">Request Access</a>
+            </div>
+            <div class="bh-scroll-hint" aria-hidden="true">
+                <span></span>
+                Scroll
             </div>
         </section>
 
-        <section class="brotherhood-what section-shell" aria-label="What the Brotherhood is">
-            <div class="brotherhood-block">
-                <p class="eyebrow">What this is</p>
-                <h2>Built for the Long Game</h2>
+        <section class="bh-what" aria-label="What the Brotherhood is">
+            <div class="bh-what-top">
+                <div>
+                    <p class="eyebrow">What this is</p>
+                    <h2>Built for the Long Game</h2>
+                </div>
                 <p>
                     Most communities gather around entertainment. This one
                     gathers around growth. Every man in this circle is here
                     because he is building something: himself, his family, his
-                    work, his legacy. The Brotherhood exists to make that
-                    building stronger.
+                    work, his legacy. We are not here to perform. We are here
+                    to become.
                 </p>
-                <p>We are not here to perform. We are here to become.</p>
             </div>
 
-            <div class="brotherhood-pillars">
-                <article class="brotherhood-pillar">
-                    <span class="eyebrow">01 - Identity</span>
+            <div class="bh-pillars">
+                <article class="bh-pillar" data-num="01">
+                    <p class="bh-pillar-tag">01 - Identity</p>
                     <h3>Know Who You Are</h3>
                     <p>
                         The circle starts with clarity. Who are you becoming?
@@ -75,8 +473,8 @@
                     </p>
                 </article>
 
-                <article class="brotherhood-pillar">
-                    <span class="eyebrow">02 - Discipline</span>
+                <article class="bh-pillar" data-num="02">
+                    <p class="bh-pillar-tag">02 - Discipline</p>
                     <h3>Hold Your Standard</h3>
                     <p>
                         Motivation is unreliable. Standards are not. This
@@ -85,8 +483,8 @@
                     </p>
                 </article>
 
-                <article class="brotherhood-pillar">
-                    <span class="eyebrow">03 - Brotherhood</span>
+                <article class="bh-pillar" data-num="03">
+                    <p class="bh-pillar-tag">03 - Brotherhood</p>
                     <h3>Build in Community</h3>
                     <p>
                         Private growth is real. But honest men around you
@@ -95,39 +493,49 @@
                     </p>
                 </article>
 
-                <article class="brotherhood-pillar">
-                    <span class="eyebrow">04 - Legacy</span>
+                <article class="bh-pillar" data-num="04">
+                    <p class="bh-pillar-tag">04 - Legacy</p>
                     <h3>Build Beyond Yourself</h3>
                     <p>
                         Every man in this room is building something that
-                        outlives applause. The circle exists to help you think
-                        longer, build deeper, and leave something real behind.
+                        outlives applause. The circle helps you think longer,
+                        build deeper, and leave something real behind.
                     </p>
                 </article>
             </div>
         </section>
 
-        <section class="brotherhood-rules section-shell" aria-labelledby="rules-title">
-            <p class="eyebrow">First-circle standard</p>
-            <h2 id="rules-title">How We Move</h2>
-            <ol class="rules-list">
-                <li>Speak honestly or stay silent. There is no performance here.</li>
-                <li>What is shared in the circle stays in the circle.</li>
-                <li>Bring your real questions, not your polished answers.</li>
-                <li>Hold your brothers to their standard with respect, not judgment.</li>
-                <li>Show up consistently. Presence is the first form of commitment.</li>
-            </ol>
+        <section class="bh-rules" aria-labelledby="bh-rules-title">
+            <div class="bh-rules-inner">
+                <div class="bh-rules-label">
+                    <p class="eyebrow">First-circle standard</p>
+                    <h2 id="bh-rules-title">How We Move</h2>
+                    <p>
+                        Five rules. No exceptions. The standard is what makes
+                        this room worth being in.
+                    </p>
+                </div>
+                <ol class="bh-rules-list">
+                    <li data-n="01">Speak honestly or stay silent. There is no performance here.</li>
+                    <li data-n="02">What is shared in the circle stays in the circle.</li>
+                    <li data-n="03">Bring your real questions, not your polished answers.</li>
+                    <li data-n="04">Hold your brothers to their standard with respect, not judgment.</li>
+                    <li data-n="05">Show up consistently. Presence is the first form of commitment.</li>
+                </ol>
+            </div>
         </section>
 
-        <section class="brotherhood-cta section-shell" aria-label="Request Brotherhood access">
-            <p class="eyebrow">Not in yet?</p>
-            <h2>The First Circle Is Still Forming</h2>
-            <p>
-                If someone sent you this page, you are already close. The
-                Brotherhood is building deliberately: small, intentional, and
-                focused. If you are ready, put your name forward.
-            </p>
-            <a href="/pages/join" class="cta-btn">Request Access</a>
+        <section class="bh-cta" aria-label="Request Brotherhood access">
+            <div class="bh-cta-inner">
+                <p class="eyebrow">Not in yet?</p>
+                <h2>The First Circle Is Still Forming.</h2>
+                <p>
+                    If someone sent you this page, you are already close. The
+                    Brotherhood is building deliberately: small, intentional,
+                    and focused on men who are serious. Put your name forward.
+                </p>
+                <a href="/pages/join" class="cta-btn">Request Access</a>
+            </div>
         </section>
     </main>
 
