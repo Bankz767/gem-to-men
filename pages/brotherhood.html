@@ -159,6 +159,105 @@
             }
         }
 
+        .bh-room {
+            position: relative;
+            z-index: 2;
+            padding: 0 clamp(1.25rem, 5vw, 4rem) 8rem;
+            background:
+                radial-gradient(circle at 50% 0%, rgba(214, 180, 95, 0.08), transparent 42%),
+                var(--navy-900);
+        }
+
+        .bh-room-shell {
+            width: min(72rem, 100%);
+            margin: -4rem auto 0;
+            display: grid;
+            grid-template-columns: minmax(0, 1.08fr) minmax(20rem, 0.92fr);
+            gap: 1px;
+            overflow: hidden;
+            background: var(--line);
+            border: 1px solid var(--line);
+            border-radius: 0.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .bh-room-card,
+        .bh-room-steps {
+            background:
+                linear-gradient(145deg, rgba(214, 180, 95, 0.065), transparent 42%),
+                var(--panel);
+            padding: clamp(2rem, 5vw, 3rem);
+        }
+
+        .bh-room-card h2 {
+            margin: 0.75rem 0 1rem;
+            color: var(--gold-light);
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 3.1rem);
+            line-height: 1.08;
+            letter-spacing: 0;
+        }
+
+        .bh-room-card p:not(.eyebrow),
+        .bh-room-steps p,
+        .bh-room-steps li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .bh-room-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            margin: 2rem 0 1rem;
+        }
+
+        .bh-discord-pending {
+            opacity: 0.76;
+            cursor: not-allowed;
+        }
+
+        .bh-room-note {
+            max-width: 32rem;
+            margin: 0;
+            color: rgba(232, 220, 195, 0.62);
+            font-size: 0.9rem;
+        }
+
+        .bh-room-steps h3 {
+            margin: 0 0 1rem;
+            color: var(--gold-light);
+            font-family: var(--serif);
+            font-size: 1.65rem;
+            line-height: 1.2;
+        }
+
+        .bh-room-steps ol {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0 0;
+            padding: 0;
+            list-style: none;
+            counter-reset: roomSteps;
+        }
+
+        .bh-room-steps li {
+            position: relative;
+            padding-left: 2.65rem;
+            counter-increment: roomSteps;
+        }
+
+        .bh-room-steps li::before {
+            content: counter(roomSteps, decimal-leading-zero);
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+            color: var(--gold);
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+
         .bh-what {
             width: min(72rem, calc(100% - 2.5rem));
             margin: 0 auto;
@@ -345,7 +444,8 @@
             }
 
             .bh-what-top,
-            .bh-rules-inner {
+            .bh-rules-inner,
+            .bh-room-shell {
                 grid-template-columns: 1fr;
             }
 
@@ -381,9 +481,14 @@
             }
 
             .bh-what,
+            .bh-room,
             .bh-rules,
             .bh-cta {
                 padding-block: 5rem;
+            }
+
+            .bh-room-shell {
+                margin-top: -3rem;
             }
 
             .bh-what-top {
@@ -436,17 +541,50 @@
         <section class="bh-hero" aria-labelledby="bh-title">
             <div class="bh-hero-inner">
                 <p class="bh-badge">First Circle - Private Access</p>
-                <h1 id="bh-title">You Are<br><em>Inside</em><br>The Room.</h1>
+                <h1 id="bh-title">Welcome to<br><em>The Circle</em></h1>
                 <p class="bh-hero-sub">
-                    This is not a fan page. Not a group chat. The Brotherhood
-                    is a deliberate circle built for men who are becoming
-                    something, not performing something.
+                    This page is the threshold. The Brotherhood gathers in a
+                    private Discord room built for honest conversation,
+                    accountability, and men serious about becoming.
                 </p>
-                <a href="/pages/join" class="cta-btn">Request Access</a>
+                <a href="#room-access" class="cta-btn">Enter the Brotherhood Room</a>
             </div>
             <div class="bh-scroll-hint" aria-hidden="true">
                 <span></span>
                 Scroll
+            </div>
+        </section>
+
+        <section class="bh-room" id="room-access" aria-labelledby="bh-room-title">
+            <div class="bh-room-shell">
+                <div class="bh-room-card">
+                    <p class="eyebrow">Private Discord</p>
+                    <h2 id="bh-room-title">Enter the Brotherhood Room</h2>
+                    <p>
+                        Discord is where the circle becomes active: introductions,
+                        accountability, announcements, voice sessions, creative
+                        drops, and the first conversations that shape GTM from
+                        the inside.
+                    </p>
+                    <div class="bh-room-actions">
+                        <span class="cta-btn bh-discord-pending" aria-disabled="true">Discord Invite Pending</span>
+                        <a class="text-link" href="/pages/standard">Read Our Standard <span aria-hidden="true">→</span></a>
+                    </div>
+                    <p class="bh-room-note">
+                        Once the server invite is ready, this button becomes a
+                        limited-use Discord link for accepted members only.
+                    </p>
+                </div>
+
+                <div class="bh-room-steps">
+                    <h3>First steps inside</h3>
+                    <p>Keep the room clean, useful, and intentional from day one.</p>
+                    <ol>
+                        <li>Use a recognizable name so brothers know who they are speaking to.</li>
+                        <li>Introduce yourself with what you are building and where you need sharpening.</li>
+                        <li>Read the standard before posting. The room moves by that code.</li>
+                    </ol>
+                </div>
             </div>
         </section>
 
@@ -530,12 +668,12 @@
 
         <section class="bh-cta" aria-label="Request Brotherhood access">
             <div class="bh-cta-inner">
-                <p class="eyebrow">Not in yet?</p>
+                <p class="eyebrow">Need access?</p>
                 <h2>The First Circle Is Still Forming.</h2>
                 <p>
-                    If someone sent you this page, you are already close. The
-                    Brotherhood is building deliberately: small, intentional,
-                    and focused on men who are serious. Put your name forward.
+                    If you were sent this page but do not have a Discord invite
+                    yet, put your name forward. The circle is building
+                    deliberately: small, intentional, and serious.
                 </p>
                 <a href="/pages/join" class="cta-btn">Request Access</a>
             </div>
