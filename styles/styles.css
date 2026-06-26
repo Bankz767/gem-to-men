@@ -1,17 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap");
+
 :root {
-  --navy-950: #070a12;
-  --navy-900: #0c1220;
-  --navy-800: #121a2b;
-  --navy-700: #1a2437;
-  --gold: #d6b45f;
-  --gold-light: #f2dd9a;
+  --navy-950: #06080f;
+  --navy-900: #0b1120;
+  --navy-800: #111828;
+  --navy-700: #192234;
+  --gold: #c9a84c;
+  --gold-light: #f0d080;
   --ivory: #f6f0df;
   --clay: #8d5f4a;
-  --text: #f6f0df;
-  --muted: #babfca;
-  --line: rgba(214, 180, 95, 0.2);
-  --panel: rgba(18, 26, 43, 0.88);
-  --shadow: 0 1.25rem 3.5rem rgba(0, 0, 0, 0.34);
+  --text: #f0e8d0;
+  --muted: #aeb4c2;
+  --line: rgba(201, 168, 76, 0.2);
+  --panel: rgba(17, 24, 40, 0.9);
+  --shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.38);
+  --radius: 0.75rem;
+  --serif: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 * {
@@ -28,14 +33,48 @@ body {
   display: flex;
   flex-direction: column;
   background:
-    linear-gradient(180deg, #080b13 0%, var(--navy-900) 38%, #090d16 100%);
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #07090f 0%, var(--navy-900) 40%, #080c15 100%);
   color: var(--text);
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-family: var(--sans);
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
   color: inherit;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.35rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation: fadeUp 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.fade-up-1 {
+  animation-delay: 80ms;
+}
+
+.fade-up-2 {
+  animation-delay: 180ms;
+}
+
+.fade-up-3 {
+  animation-delay: 300ms;
+}
+
+.fade-up-4 {
+  animation-delay: 420ms;
 }
 
 .site-header {
@@ -55,10 +94,10 @@ a {
 
 .brand a {
   color: var(--gold);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(1.35rem, 3vw, 1.8rem);
-  font-weight: 700;
-  letter-spacing: 0.12em;
+  font-weight: 400;
+  letter-spacing: 0;
   text-decoration: none;
 }
 
@@ -109,20 +148,35 @@ main {
 }
 
 .hero {
-  min-height: clamp(34rem, 72vh, 48rem);
+  position: relative;
+  min-height: 100svh;
   display: grid;
   align-items: center;
-  padding: clamp(5rem, 10vw, 8rem) clamp(1.25rem, 5vw, 4rem);
+  overflow: hidden;
+  padding: clamp(7rem, 14vw, 10rem) clamp(1.25rem, 5vw, 4rem) clamp(5rem, 10vw, 7rem);
   text-align: left;
   background:
-    linear-gradient(90deg, rgba(7, 10, 18, 0.95) 0%, rgba(7, 10, 18, 0.74) 48%, rgba(7, 10, 18, 0.46) 100%),
-    linear-gradient(180deg, rgba(7, 10, 18, 0.1), rgba(7, 10, 18, 0.92)),
+    linear-gradient(105deg, rgba(6, 8, 15, 0.97) 0%, rgba(6, 8, 15, 0.76) 52%, rgba(6, 8, 15, 0.5) 100%),
+    linear-gradient(180deg, rgba(6, 8, 15, 0.08), rgba(6, 8, 15, 0.95)),
     url("../assets/Brotherhood-banner.jpg") center / cover no-repeat;
 }
 
+.hero::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 12rem;
+  background: linear-gradient(to bottom, transparent, #07090f);
+  pointer-events: none;
+}
+
 .hero-content {
-  width: min(52rem, 100%);
-  margin-inline: max(0rem, calc((100vw - 74rem) / 2));
+  position: relative;
+  z-index: 1;
+  width: min(56rem, 100%);
+  margin-inline: max(0rem, calc((100vw - 76rem) / 2));
 }
 
 .eyebrow {
@@ -130,28 +184,28 @@ main {
   color: var(--gold);
   font-size: 0.85rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
 .hero h1 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(3rem, 8vw, 6.4rem);
-  line-height: 1.05;
-  letter-spacing: 0.03em;
+  line-height: 1;
+  letter-spacing: 0;
   text-transform: uppercase;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.65);
+  text-shadow: 0 4px 40px rgba(0, 0, 0, 0.68);
 }
 
 .hero-copy {
   max-width: 42rem;
   margin: 1.5rem 0 2.5rem;
   color: var(--text);
-  font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(1.05rem, 2.5vw, 1.3rem);
   line-height: 1.75;
+  opacity: 0.92;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
@@ -170,10 +224,10 @@ main {
   border-radius: 0.35rem;
   font-size: 0.95rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-decoration: none;
   text-transform: uppercase;
-  box-shadow: 0 0.9rem 2rem rgba(214, 180, 95, 0.16);
+  box-shadow: 0 0.9rem 2rem rgba(201, 168, 76, 0.18);
   transition: background 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
 
@@ -207,10 +261,10 @@ main {
 
 .mission-label span {
   display: block;
-  color: rgba(228, 197, 106, 0.13);
-  font-family: Georgia, "Times New Roman", serif;
+  color: rgba(201, 168, 76, 0.11);
+  font-family: var(--serif);
   font-size: clamp(5.5rem, 15vw, 11rem);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 0.85;
 }
 
@@ -220,8 +274,9 @@ main {
 .home-final-cta h2 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(2rem, 4.5vw, 3.4rem);
+  font-weight: 400;
   line-height: 1.15;
 }
 
@@ -241,7 +296,7 @@ main {
   overflow: hidden;
   background: var(--line);
   border: 1px solid var(--line);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
@@ -255,11 +310,18 @@ main {
   background:
     linear-gradient(145deg, rgba(214, 180, 95, 0.11), transparent 58%),
     var(--panel);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(1.35rem, 3vw, 2.2rem);
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.18;
   text-align: center;
+  transition: background 200ms ease;
+}
+
+.brand-mantra p:hover {
+  background:
+    linear-gradient(145deg, rgba(201, 168, 76, 0.18), transparent 58%),
+    var(--panel);
 }
 
 .fit-section {
@@ -278,7 +340,7 @@ main {
 .fit-intro h2 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(2.3rem, 5.5vw, 4.2rem);
   line-height: 1.08;
 }
@@ -299,34 +361,63 @@ main {
 }
 
 .fit-promise-grid article {
+  position: relative;
+  overflow: hidden;
   min-height: 16rem;
   padding: clamp(1.4rem, 4vw, 2rem);
   background:
-    linear-gradient(145deg, rgba(214, 180, 95, 0.12), transparent 58%),
+    linear-gradient(145deg, rgba(201, 168, 76, 0.1), transparent 58%),
     var(--panel);
   border: 1px solid var(--line);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
+  transition: background 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+.fit-promise-grid article::after {
+  content: attr(data-num);
+  position: absolute;
+  right: 0.8rem;
+  bottom: -1.2rem;
+  color: rgba(201, 168, 76, 0.06);
+  font-family: var(--serif);
+  font-size: 7rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.fit-promise-grid article:hover {
+  background:
+    linear-gradient(145deg, rgba(201, 168, 76, 0.16), transparent 58%),
+    var(--panel);
+  box-shadow: var(--shadow);
+  transform: translateY(-3px);
 }
 
 .fit-promise-grid span {
   color: var(--gold);
   font-size: 0.76rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0;
 }
 
 .fit-promise-grid h3 {
   margin: 3.5rem 0 0.75rem;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: 1.55rem;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
 }
 
 .fit-promise-grid p {
   margin: 0;
   color: var(--muted);
   line-height: 1.65;
+  position: relative;
+  z-index: 1;
 }
 
 .fit-paths {
@@ -336,7 +427,7 @@ main {
   overflow: hidden;
   background: var(--line);
   border: 1px solid var(--line);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
@@ -353,14 +444,15 @@ main {
 }
 
 .fit-paths a:hover {
-  background: rgba(214, 180, 95, 0.1);
+  background: rgba(201, 168, 76, 0.1);
+  transform: translateY(-2px);
 }
 
 .fit-paths span {
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: 1.45rem;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .fit-paths small {
@@ -380,12 +472,14 @@ main {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   border: 1px solid var(--line);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
 }
 
 .home-pillar-card {
+  position: relative;
+  overflow: hidden;
   min-height: 18rem;
   padding: clamp(1.5rem, 3vw, 2.25rem);
   background: var(--panel);
@@ -398,22 +492,38 @@ main {
 }
 
 .home-pillar-card:hover {
-  background: rgba(228, 197, 106, 0.09);
+  background: rgba(201, 168, 76, 0.09);
   transform: translateY(-2px);
+}
+
+.home-pillar-card::after {
+  content: attr(data-num);
+  position: absolute;
+  right: 0.7rem;
+  bottom: -1.25rem;
+  color: rgba(201, 168, 76, 0.06);
+  font-family: var(--serif);
+  font-size: 7rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
 }
 
 .home-pillar-card span {
   color: var(--gold);
   font-size: 0.76rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0;
 }
 
 .home-pillar-card h3 {
   margin: 5rem 0 0.8rem;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: 1.45rem;
+  font-weight: 400;
+  position: relative;
+  z-index: 1;
 }
 
 .home-pillar-card p {
@@ -421,6 +531,8 @@ main {
   color: var(--muted);
   font-size: 0.94rem;
   line-height: 1.65;
+  position: relative;
+  z-index: 1;
 }
 
 .home-benefits {
@@ -462,13 +574,15 @@ main {
   color: var(--gold);
   font-size: 0.78rem;
   font-weight: 800;
+  letter-spacing: 0;
 }
 
 .benefits-list h3 {
   margin: 0 0 0.6rem;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: 1.35rem;
+  font-weight: 400;
 }
 
 .benefits-list p {
@@ -502,16 +616,16 @@ main {
   display: flex;
   flex-direction: column;
   background:
-    linear-gradient(145deg, rgba(214, 180, 95, 0.12), transparent 58%),
+    linear-gradient(145deg, rgba(201, 168, 76, 0.1), transparent 58%),
     var(--panel);
   border: 1px solid var(--line);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.18);
   transition: border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
 }
 
 .home-insight-card:hover {
-  border-color: rgba(228, 197, 106, 0.5);
+  border-color: rgba(201, 168, 76, 0.5);
   transform: translateY(-4px);
   box-shadow: var(--shadow);
 }
@@ -519,8 +633,9 @@ main {
 .home-insight-card h3 {
   margin: auto 0 0.8rem;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: 1.45rem;
+  font-weight: 400;
 }
 
 .home-insight-card > p:last-child {
@@ -546,10 +661,10 @@ main {
   gap: 1.25rem;
   padding: clamp(1.4rem, 4vw, 2rem);
   background:
-    linear-gradient(135deg, rgba(228, 197, 106, 0.12), transparent 60%),
+    linear-gradient(135deg, rgba(201, 168, 76, 0.12), transparent 60%),
     var(--panel);
   border: 1px solid var(--line);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   box-shadow: 0 1rem 2.5rem rgba(0, 0, 0, 0.2);
 }
 
@@ -561,35 +676,46 @@ main {
   color: var(--navy-950);
   background: var(--gold);
   border-radius: 50%;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
 }
 
 .home-shop-preview h3 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 400;
   line-height: 1.2;
 }
 
-.home-conviction {
-  padding-block: clamp(5rem, 11vw, 9rem);
+.home-conviction.section-shell {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding: clamp(5rem, 11vw, 9rem) clamp(1.25rem, 5vw, 4rem);
+  background:
+    linear-gradient(180deg, rgba(6, 8, 15, 0.96), rgba(11, 17, 32, 0.98)),
+    var(--navy-950);
 }
 
 .home-conviction blockquote {
   width: min(58rem, 100%);
   margin: 0 auto;
+  padding-block: 2.5rem;
+  border-top: 1px solid rgba(201, 168, 76, 0.45);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.45);
   text-align: center;
 }
 
 .home-conviction blockquote p {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(1.8rem, 4.5vw, 3rem);
   font-style: italic;
+  font-weight: 400;
   line-height: 1.45;
 }
 
@@ -600,7 +726,7 @@ main {
   font-size: 0.78rem;
   font-style: normal;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -642,10 +768,10 @@ main {
 
 .footer-brand a {
   color: var(--gold);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: 1.35rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   text-decoration: none;
 }
 
@@ -708,7 +834,7 @@ main {
 .about-hero h1 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(2.7rem, 7vw, 5rem);
   line-height: 1.05;
   text-transform: uppercase;
@@ -744,7 +870,7 @@ main {
 .shop-cta h2 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(2rem, 4.5vw, 3.25rem);
   line-height: 1.15;
 }
@@ -771,7 +897,7 @@ main {
 .about-quote p {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(1.3rem, 3vw, 1.8rem);
   font-style: italic;
   line-height: 1.55;
@@ -783,7 +909,7 @@ main {
   color: var(--muted);
   font-size: 0.85rem;
   font-style: normal;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -831,13 +957,13 @@ main {
   color: var(--gold);
   font-size: 0.8rem;
   font-weight: 800;
-  letter-spacing: 0.15em;
+  letter-spacing: 0;
 }
 
 .value-card h3 {
   margin: 1.6rem 0 0.75rem;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: 1.4rem;
 }
 
@@ -889,7 +1015,7 @@ main {
 .standard-hero h1 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(3rem, 8vw, 6rem);
   line-height: 1.02;
   text-transform: uppercase;
@@ -936,7 +1062,7 @@ main {
   max-width: 48rem;
   margin: 0 auto;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(1.55rem, 4vw, 2.7rem);
   font-style: italic;
   line-height: 1.35;
@@ -966,7 +1092,7 @@ main {
 .standard-origin blockquote p {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(1.3rem, 3vw, 1.85rem);
   font-style: italic;
   line-height: 1.55;
@@ -978,7 +1104,7 @@ main {
   color: var(--muted);
   font-size: 0.85rem;
   font-style: normal;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -1023,13 +1149,13 @@ main {
   color: var(--gold);
   font-size: 0.76rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0;
 }
 
 .standard-card h3 {
   margin: 4rem 0 0.8rem;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: 1.35rem;
   line-height: 1.2;
 }
@@ -1074,7 +1200,7 @@ main {
 .practice-list h3 {
   margin: 0 0 0.5rem;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: 1.28rem;
 }
 
@@ -1126,7 +1252,7 @@ main {
 .blog-hero h1 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(2.7rem, 7vw, 5rem);
   line-height: 1.05;
   text-transform: uppercase;
@@ -1151,7 +1277,7 @@ main {
 
 .featured-number {
   color: rgba(228, 197, 106, 0.14);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(8rem, 22vw, 16rem);
   font-weight: 700;
   line-height: 0.8;
@@ -1163,7 +1289,7 @@ main {
   color: var(--gold);
   font-size: 0.76rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -1171,7 +1297,7 @@ main {
 .blog-cta h2 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(2rem, 4.5vw, 3.4rem);
   line-height: 1.15;
 }
@@ -1242,14 +1368,14 @@ main {
   color: var(--navy-950);
   background: var(--gold);
   border-radius: 50%;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-weight: 800;
 }
 
 .insight-card h3 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: 1.35rem;
 }
 
@@ -1299,7 +1425,7 @@ main {
 .shop-hero h1 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(2.7rem, 7vw, 5rem);
   line-height: 1.05;
   text-transform: uppercase;
@@ -1397,9 +1523,9 @@ main {
   place-items: center;
   color: var(--navy-950);
   background: var(--gold);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
 }
 
 .product-visual-shirt::before {
@@ -1474,7 +1600,7 @@ main {
 .product-info h3 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: 1.3rem;
   line-height: 1.25;
 }
@@ -1505,7 +1631,7 @@ main {
   color: var(--gold);
   font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.1em;
+  letter-spacing: 0;
   text-transform: uppercase;
 }
 
@@ -1515,7 +1641,7 @@ main {
   color: var(--gold);
   font-size: 0.82rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -1565,7 +1691,7 @@ main {
 .vendor-intro h2 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(2rem, 5vw, 3.2rem);
   line-height: 1.12;
 }
@@ -1589,7 +1715,7 @@ main {
 .vendor-form-card h3 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(1.55rem, 3vw, 2rem);
   line-height: 1.2;
 }
@@ -1627,7 +1753,7 @@ main {
 .article-hero h1 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(2.6rem, 7vw, 5rem);
   line-height: 1.06;
   text-transform: uppercase;
@@ -1656,14 +1782,14 @@ main {
 .article-body h2 {
   margin: 2.4rem 0 0.75rem;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(1.65rem, 4vw, 2.35rem);
   line-height: 1.18;
 }
 
 .article-body .article-lede {
   color: var(--text);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(1.25rem, 3vw, 1.55rem);
   line-height: 1.7;
 }
@@ -1707,7 +1833,7 @@ main {
 .contact-intro h1 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(2.4rem, 6vw, 4.5rem);
   line-height: 1.08;
 }
@@ -1733,7 +1859,7 @@ main {
 .contact-form-card h2 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   line-height: 1.2;
 }
@@ -1875,7 +2001,7 @@ main {
   cursor: pointer;
   font: inherit;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   text-transform: uppercase;
   transition: background 180ms ease, color 180ms ease, transform 180ms ease;
 }
@@ -1927,7 +2053,7 @@ main {
 .success-card h1 {
   margin: 0;
   color: var(--gold-light);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--serif);
   font-size: clamp(2rem, 5vw, 3.4rem);
   line-height: 1.15;
 }
@@ -2021,10 +2147,10 @@ main {
   }
 
   .hero {
-    min-height: 72vh;
+    min-height: 88svh;
     text-align: center;
     background:
-      linear-gradient(rgba(7, 10, 18, 0.72), rgba(7, 10, 18, 0.94)),
+      linear-gradient(rgba(6, 8, 15, 0.72), rgba(6, 8, 15, 0.94)),
       url("../assets/Brotherhood-banner.jpg") center / cover no-repeat;
   }
 
@@ -2152,6 +2278,7 @@ main {
   *,
   *::before,
   *::after {
+    animation: none !important;
     scroll-behavior: auto !important;
     transition: none !important;
   }
