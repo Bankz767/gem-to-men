@@ -56,10 +56,50 @@
                 <h2 id="shop-intro-title">Built for everyday reminders, not empty branding.</h2>
             </div>
             <p>
-                These first products are placeholders for the direction of the
-                shop. When the physical merch is ready, each item can connect
-                directly to a checkout link.
+                Drop 01 starts with one lead piece and a small set of
+                supporting concepts. First-access requests tell us what to
+                produce before the collection opens for orders.
             </p>
+        </section>
+
+        <section class="drop-feature section-shell" aria-labelledby="drop-feature-title">
+            <div class="drop-feature-visual product-visual product-visual-shirt" aria-hidden="true">
+                <span>GTM</span>
+            </div>
+
+            <div class="drop-feature-copy">
+                <p class="eyebrow">Drop 01 lead piece</p>
+                <h2 id="drop-feature-title">Rise With Brothers Tee</h2>
+                <p>
+                    A clean black-and-gold tee built around the line that
+                    carries GTM: men do not rise in isolation. This is the
+                    first piece we prepare for the Foundation Drop.
+                </p>
+
+                <dl class="drop-specs" aria-label="Rise With Brothers Tee details">
+                    <div>
+                        <dt>Target price</dt>
+                        <dd>$35</dd>
+                    </div>
+                    <div>
+                        <dt>Sizes</dt>
+                        <dd>S - XXL</dd>
+                    </div>
+                    <div>
+                        <dt>Colorway</dt>
+                        <dd>Black / gold</dd>
+                    </div>
+                    <div>
+                        <dt>Status</dt>
+                        <dd>First access</dd>
+                    </div>
+                </dl>
+
+                <div class="drop-actions">
+                    <a class="cta-btn" href="#shop-waitlist">Reserve First Access</a>
+                    <a class="text-link" href="#vendor-interest">Supply the drop <span aria-hidden="true">→</span></a>
+                </div>
+            </div>
         </section>
 
         <section class="shop-section" aria-labelledby="products-title">
@@ -83,9 +123,9 @@
                             <p>A clean everyday tee carrying the core brotherhood message.</p>
                             <div class="product-meta">
                                 <span>$35</span>
-                                <span>Coming soon</span>
+                                <span>Drop 01</span>
                             </div>
-                            <a class="product-link" href="#shop-waitlist">Notify me</a>
+                            <a class="product-link" href="#shop-waitlist">Reserve access</a>
                         </div>
                     </article>
 
@@ -101,7 +141,7 @@
                                 <span>$28</span>
                                 <span>Coming soon</span>
                             </div>
-                            <a class="product-link" href="#shop-waitlist">Notify me</a>
+                            <a class="product-link" href="#shop-waitlist">Vote for this</a>
                         </div>
                     </article>
 
@@ -117,7 +157,7 @@
                                 <span>$22</span>
                                 <span>Coming soon</span>
                             </div>
-                            <a class="product-link" href="#shop-waitlist">Notify me</a>
+                            <a class="product-link" href="#shop-waitlist">Vote for this</a>
                         </div>
                     </article>
 
@@ -133,7 +173,7 @@
                                 <span>$12</span>
                                 <span>Coming soon</span>
                             </div>
-                            <a class="product-link" href="#shop-waitlist">Notify me</a>
+                            <a class="product-link" href="#shop-waitlist">Vote for this</a>
                         </div>
                     </article>
                 </div>
@@ -145,8 +185,9 @@
                 <p class="eyebrow">Want first access?</p>
                 <h2 id="shop-cta-title">Join the list before the first drop.</h2>
                 <p>
-                    Tell us what products you want to see first. This gives
-                    GTM a cleaner signal before the first merch drop.
+                    Reserve your place for the Rise With Brothers Tee or tell
+                    us which product should move next. First-access members get
+                    the order link before the wider drop opens.
                 </p>
             </div>
             <form class="shop-waitlist-form" action="https://formspree.io/f/maqgnaer" method="POST">
@@ -165,14 +206,26 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="shop-interest">What should drop first?</label>
+                    <label for="shop-interest">What are you interested in?</label>
                     <select id="shop-interest" name="shop_interest" required>
-                        <option value="" selected disabled>Select a product type</option>
-                        <option value="apparel">Apparel</option>
-                        <option value="caps">Caps</option>
-                        <option value="journals">Journals</option>
-                        <option value="wristbands">Wristbands</option>
+                        <option value="" selected disabled>Select a product</option>
+                        <option value="rise-with-brothers-tee">Rise With Brothers Tee</option>
+                        <option value="legacy-cap">Legacy Cap</option>
+                        <option value="discipline-journal">Discipline Journal</option>
+                        <option value="brotherhood-wristband">Brotherhood Wristband</option>
                         <option value="other">Something else</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="shop-size">Preferred tee size</label>
+                    <select id="shop-size" name="preferred_size">
+                        <option value="" selected>Select a size if you want the tee</option>
+                        <option value="small">Small</option>
+                        <option value="medium">Medium</option>
+                        <option value="large">Large</option>
+                        <option value="xl">XL</option>
+                        <option value="xxl">XXL</option>
                     </select>
                 </div>
 

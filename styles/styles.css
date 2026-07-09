@@ -869,6 +869,7 @@ main {
 .standard-practice h2,
 .standard-cta h2,
 .shop-intro h2,
+.drop-feature h2,
 .shop-toolbar h2,
 .shop-cta h2 {
   margin: 0;
@@ -1457,6 +1458,94 @@ main {
   color: var(--muted);
   font-size: 1.05rem;
   line-height: 1.8;
+}
+
+.drop-feature {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.9fr) minmax(0, 1.1fr);
+  gap: 1px;
+  overflow: hidden;
+  margin-bottom: clamp(4rem, 9vw, 7rem);
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow);
+}
+
+.drop-feature-visual {
+  min-height: 30rem;
+  border-bottom: 0;
+}
+
+.drop-feature-visual.product-visual-shirt::before {
+  width: min(17rem, 70%);
+  height: min(20rem, 76%);
+}
+
+.drop-feature-visual.product-visual-shirt span {
+  width: 5.4rem;
+  height: 5.4rem;
+  font-size: 1.2rem;
+}
+
+.drop-feature-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  background:
+    linear-gradient(145deg, rgba(201, 168, 76, 0.12), transparent 48%),
+    var(--panel);
+}
+
+.drop-feature-copy > p:not(.eyebrow) {
+  max-width: 43rem;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1.04rem;
+  line-height: 1.78;
+}
+
+.drop-specs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 2rem 0;
+  overflow: hidden;
+  background: rgba(201, 168, 76, 0.18);
+  border: 1px solid rgba(201, 168, 76, 0.18);
+  border-radius: 0.5rem;
+}
+
+.drop-specs div {
+  min-height: 6.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  background: rgba(7, 10, 18, 0.58);
+}
+
+.drop-specs dt {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.drop-specs dd {
+  margin: 0;
+  color: var(--gold-light);
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.drop-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
 }
 
 .shop-section {
@@ -2260,6 +2349,18 @@ main {
     grid-template-columns: 1fr;
   }
 
+  .drop-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .drop-feature-visual {
+    min-height: 22rem;
+  }
+
+  .drop-specs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .product-grid {
     grid-template-columns: 1fr;
   }
@@ -2274,6 +2375,17 @@ main {
 
   .submit-btn {
     width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .drop-specs {
+    grid-template-columns: 1fr;
+  }
+
+  .drop-actions .cta-btn {
+    width: 100%;
+    text-align: center;
   }
 }
 
